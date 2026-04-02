@@ -12,12 +12,6 @@ import {
   scenarioNeeds,
 } from './data/content'
 
-function encodeForm(data) {
-  return Object.entries(data)
-    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-    .join('&')
-}
-
 function App() {
   const [formData, setFormData] = useState({
     parentName: '',
@@ -26,57 +20,10 @@ function App() {
     message: '',
     botField: '',
   })
-  const [status, setStatus] = useState('idle')
-  const [submitError, setSubmitError] = useState('')
 
   function handleChange(event) {
     const { name, value } = event.target
     setFormData((current) => ({ ...current, [name]: value }))
-  }
-
-  async function handleSubmit(event) {
-    event.preventDefault()
-
-    if (formData.botField) {
-      return
-    }
-
-    setStatus('submitting')
-    setSubmitError('')
-
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: encodeForm({
-          'form-name': 'trial-booking',
-          parentName: formData.parentName,
-          grade: formData.grade,
-          phone: formData.phone,
-          message: formData.message,
-          'bot-field': formData.botField,
-        }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Submission failed')
-      }
-
-      setStatus('success')
-      setFormData({
-        parentName: '',
-        grade: '',
-        phone: '',
-        message: '',
-        botField: '',
-      })
-      window.location.assign('/thanks.html')
-    } catch (error) {
-      setStatus('error')
-      setSubmitError('提交暂时没有成功，请稍后重试，或通过电话 / 微信与我们联系。')
-    }
   }
 
   return (
@@ -369,7 +316,6 @@ function App() {
               action="/thanks.html"
               data-netlify="true"
               netlify-honeypot="bot-field"
-              onSubmit={handleSubmit}
             >
               <input type="hidden" name="form-name" value="trial-booking" />
               <p className="hidden">
@@ -417,23 +363,12 @@ function App() {
 
                 <button
                   type="submit"
-                  disabled={status === 'submitting'}
-                  className="mt-2 rounded-full bg-pine-700 px-6 py-4 text-base font-semibold text-white transition hover:bg-pine-800 disabled:cursor-not-allowed disabled:bg-pine-400"
+                  className="mt-2 rounded-full bg-pine-700 px-6 py-4 text-base font-semibold text-white transition hover:bg-pine-800"
                 >
-                  {status === 'submitting' ? '提交中...' : '提交预约信息'}
+                  提交预约信息
                 </button>
-                {status === 'success' ? (
-                  <p className="rounded-2xl bg-pine-50 px-4 py-3 text-sm leading-6 text-pine-700">
-                    提交成功，正在跳转到感谢页面。
-                  </p>
-                ) : null}
-                {status === 'error' ? (
-                  <p className="rounded-2xl bg-red-50 px-4 py-3 text-sm leading-6 text-red-700">
-                    {submitError}
-                  </p>
-                ) : null}
                 <p className="text-sm leading-6 text-slate-500">
-                  表单上线后会直接通过 Netlify Forms 收到提交信息，当前页面已按可部署方案配置完成。
+                  提交后会直接跳转到感谢页，信息将进入 Netlify Forms，便于后续统一跟进和管理。
                 </p>
               </div>
             </form>
