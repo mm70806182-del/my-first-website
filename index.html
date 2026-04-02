@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="三壹桥国际教育英文无领导小组课程，帮助初二到高三学生提升英文表达、思辨、辩论、面试与学术适应能力。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>英文无领导小组课程 | Trinity Edubridge International</title>
+  </head>
+  <body>
+    <form
+      name="trial-booking"
+      method="POST"
+      action="/thanks.html"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="trial-booking" />
+      <p hidden>
+        <label>
+          Don&apos;t fill this out if you&apos;re human:
+          <input type="text" name="bot-field" />
+        </label>
+      </p>
+      <input type="text" name="parentName" />
+      <input type="text" name="grade" />
+      <input type="tel" name="phone" />
+      <textarea name="message"></textarea>
+    </form>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+  </html>
