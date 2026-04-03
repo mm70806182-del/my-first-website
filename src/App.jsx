@@ -66,7 +66,7 @@ function App() {
           <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:px-10 lg:py-24">
             <div className="max-w-3xl">
               <p className="mb-5 inline-flex rounded-full border border-pine-200 bg-pine-50 px-4 py-2 text-sm font-medium text-pine-700">
-                面向高一到高三学生的英文表达、讨论、面试与学术适应训练
+                面向高一到高三学生的英文表达、讨论、辩论、面试与学术适应训练
               </p>
               <h1 className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl lg:text-6xl">
                 英语成绩不差，
@@ -75,7 +75,7 @@ function App() {
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
                 卡住孩子的，往往不是分数，而是英文输出、逻辑表达、临场应对和观点组织。
                 真到综评面试、英文面试、无领导小组讨论这类场景，这个短板会一下子暴露出来；
-                而底层能力拉起来之后，校内英语和高考英语也会更从容。
+                而底层能力拉起来之后，英语听力、英语作文、校内英语和高考英语成绩也会一起提升。
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <a
